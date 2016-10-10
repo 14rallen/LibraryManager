@@ -1,0 +1,59 @@
+﻿@using BusinessObjects
+@model BusinessObjects.Customer
+@{
+    ViewBag.Title = "My Profile";
+}
+
+<h2>@ViewBag.Title.</h2>
+@{
+    if (Session["AccessToken"] != null)
+    {
+        AccessToken accessToken = (AccessToken)Session["AccessToken"];
+        Customer user = accessToken.User;
+
+        <div class="table sideways">
+            <div class="tableContainer">
+                <div class="tableCell">
+                    <div class="tableRow tableHeader">
+                        Username
+                    </div>
+                    <div class="tableRow tableHeader">
+                        First Name
+                    </div>
+                    <div class="tableRow tableHeader">
+                        Last Name
+                    </div>
+                    <div class="tableRow tableHeader">
+                        Email
+                    </div>
+                    <div class="tableRow tableHeader">
+                        Phone
+                    </div>
+                    <div class="tableRow tableHeader">
+                        Edit
+                    </div>
+                </div>
+                <div class="tableCell">
+                    <div class="tableRow">
+                        @accessToken.User.UserName
+                    </div>
+                    <div class="tableRow">
+                        @accessToken.User.FirstName
+                    </div>
+                    <div class="tableRow">
+                        @accessToken.User.LastName
+                    </div>
+                    <div class="tableRow">
+                        @accessToken.User.Email &nbsp
+                    </div>
+                    <div class="tableRow">
+                        @accessToken.User.Phone &nbsp
+                    </div>
+                    <div class="tableRow">
+                        @Html.ActionLink("Edit Profile", "EditProfile")
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+}

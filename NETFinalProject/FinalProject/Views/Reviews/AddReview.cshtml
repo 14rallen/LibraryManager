@@ -1,0 +1,47 @@
+﻿@model BusinessObjects.Review
+@using BusinessLogic;
+@using BusinessObjects
+@{
+    AccessToken accessToken = ((AccessToken)Session["AccessToken"]);
+    BookManager bookManager = new BookManager();
+    string isbn = ViewBag.ISBN;
+    Book book = bookManager.GetBookListByISBN(isbn).ElementAt(0);
+}
+@section scripts{
+    <script src="~/Scripts/jquery-1.10.2.min.js"></script>
+
+    <script type="text/javascript">
+        $("#Content").html("@ViewBag.Content");
+    </script>
+}
+
+<h2>Leave a review for @Html.ActionLink(book.Title, "Details", "Book", book, null)</h2>
+
+@using (Html.BeginForm("AddReview", "Reviews", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+{
+    @Html.AntiForgeryToken()
+    <hr />
+    @Html.ValidationSummary("", new { @class = "text-danger" })
+    <div class="form-group">
+        @Html.LabelFor(m => m.Content, new { @class = "col-md-2 control-label" })
+        <div class="col-md-10">
+            @Html.TextAreaFor(m => m.Content, new
+       {
+           @class = "form-control"@*, @Value = ViewBag.Content*@ })
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="col-md-10">
+            @Html.TextAreaFor(m => m.ISBN, new { @class = "form-control", style = "display: none;", @Value = ViewBag.ISBN })
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" class="btn btn-default" value="Add" />
+        </div>
+    </div>
+}
+
+
+
+

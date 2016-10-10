@@ -1,0 +1,120 @@
+﻿@model IEnumerable<BusinessObjects.Book>
+@section styles{
+    <link rel="Stylesheet" href="@Href("~/Content/Site.css")" />
+}
+@section scripts{
+    @Scripts.Render("~/bundles/jqueryval")
+    <script src="~/Scripts/jquery.validate.min.js"></script>
+    <script src="~/Scripts/jquery.unobtrusive-ajax.js"></script>
+
+    <link href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/themes/cupertino/jquery-ui.css" type="text/css" rel="Stylesheet" />
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4/jquery.min.js" type="text/javascript"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/jquery-ui.min.js" type="text/javascript"></script>
+
+
+    <script type="text/javascript" language="javascript">
+        $(document).ready(function () {
+            $("#searchTitle").autocomplete({
+                source: "@Url.Action("AutocompleteTitle")"
+            });
+
+            $("#searchISBN").autocomplete({
+                source: "@Url.Action("AutocompleteISBN")"
+            });
+
+            $("#searchAuthor").autocomplete({
+                source: "@Url.Action("AutocompleteAuthor")",
+                focus: function (event, ui) {
+                    $("#searchAuthor").val(ui.item.label);
+                    return false;
+                },
+                select: function (event, ui) {
+                    $("#searchAuthor").val(ui.item.label);
+                    $("#searchAuthor-id").val(ui.item.value);
+                    return false;
+                }
+            })
+
+            $("#PerPage").change(function () {
+                $("input[type=submit]").click();
+            });
+        });
+    </script>
+}
+@Styles.Render("~/Content/themes/base/css")
+@Scripts.Render("~/bundles/jquery")
+@Scripts.Render("~/bundles/jqueryui")
+@using BusinessLogic
+@using BusinessObjects
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    AuthorManager authorManager = new AuthorManager();
+    Paginate<Book> paginate = new Paginate<Book>();
+    PageDetails page = (PageDetails)Session["PageDetails"];
+    if (page == null)
+    {
+        page = new PageDetails()
+        {
+            Count = 1,
+            CurrentPage = 1,
+            PerPage = 5
+        };
+    }
+}
+
+<div class="jumbotron">
+    <h2>Find a book</h2>
+    <p class="lead">Search for books by entering the title, author, or ISBN.</p>
+    @{AccessToken accessToken = ((AccessToken)Session["AccessToken"]);}
+    <ul class="toplinks">
+        @if (accessToken != null && (accessToken.IsUserInRole("Admin") || accessToken.IsUserInRole("Employee")))
+        {
+            <li>@Html.ActionLink("Add Book", "AddBook", "Book", null, new { @class = "linkbutton" })</li>
+        }
+    </ul>
+</div>
+
+<div>
+    Current Page: @page.CurrentPage
+</div>
+<div class="page">
+    @using (Ajax.BeginForm("Books", "Book", FormMethod.Post, new AjaxOptions { HttpMethod = "post", InsertionMode = InsertionMode.Replace, UpdateTargetId = "booksList" }, new { @class = "form-horizontal", role = "form", id = "bookSearchForm" }))
+    {
+        @Html.AntiForgeryToken()
+        <div class="search">
+            <input type="text" name="searchTitle" id="searchTitle" />
+            <input type="submit" name="submit" value="Search Title" />
+        </div>
+
+        <div class="search">
+            <input type="text" name="searchISBN" id="searchISBN" />
+            <input type="submit" name="submit" value="Search ISBN" />
+        </div>
+
+        <div class="search">
+            <input type="text" name="searchAuthor" id="searchAuthor" />
+            <input type="hidden" name="searchAuthor-id" id="searchAuthor-id">
+            <input type="submit" name="submit" value="Search Author" />
+        </div>
+        //The drop down is hidden because I was having problems with it and ajax. Deleting it or commenting the drop down
+        // out resulted in an unforseen problem. Pages are now to display 5 books per page.
+        @Html.DropDownList("PerPage", new SelectList((int[])Session["Pages"], page.PerPage), new { id = "PerPage", hidden="hidden" })
+
+        <div class="container">
+            <ul class="pager">
+                <li>@Html.ActionLink("Previous", "Books", "Book", new { currentPage = page.CurrentPage - 1, title = ViewBag.BookTitle }, new { @class = "center" })</li>
+                <li>@Html.ActionLink("Next", "Books", "Book", new { currentPage = page.CurrentPage + 1, title = ViewBag.BookTitle }, new { @class = "center" })</li>
+            </ul>
+        </div>
+        <div id="booksList">
+            @{Html.RenderPartial("BooksList", Model);}
+        </div>
+    <div class="container">
+        <ul class="pager">
+            <li>@Html.ActionLink("Previous", "Books", "Book", new { currentPage = page.CurrentPage - 1, title = ViewBag.BookTitle }, new { @class = "center" })</li>
+            <li>@Html.ActionLink("Next", "Books", "Book", new { currentPage = page.CurrentPage + 1, title = ViewBag.BookTitle }, new { @class = "center" })</li>
+        </ul>
+    </div>
+    }
+</div>

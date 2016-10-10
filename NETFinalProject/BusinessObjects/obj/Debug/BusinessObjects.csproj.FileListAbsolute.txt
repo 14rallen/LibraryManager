@@ -1,0 +1,29 @@
+F:\NET 3\FinalProject\BusinessObjects\bin\Debug\BusinessObjects.dll
+F:\NET 3\FinalProject\BusinessObjects\bin\Debug\BusinessObjects.pdb
+F:\NET 3\FinalProject\BusinessObjects\obj\Debug\BusinessObjects.dll
+F:\NET 3\FinalProject\BusinessObjects\obj\Debug\BusinessObjects.pdb
+D:\NET 3\FinalProject\BusinessObjects\bin\Debug\BusinessObjects.dll
+D:\NET 3\FinalProject\BusinessObjects\bin\Debug\BusinessObjects.pdb
+D:\NET 3\FinalProject\BusinessObjects\obj\Debug\BusinessObjects.csprojResolveAssemblyReference.cache
+D:\NET 3\FinalProject\BusinessObjects\obj\Debug\BusinessObjects.dll
+D:\NET 3\FinalProject\BusinessObjects\obj\Debug\BusinessObjects.pdb
+C:\Users\Rhett\Desktop\FinalProject\BusinessObjects\bin\Debug\BusinessObjects.dll
+C:\Users\Rhett\Desktop\FinalProject\BusinessObjects\bin\Debug\BusinessObjects.pdb
+C:\Users\Rhett\Desktop\FinalProject\BusinessObjects\obj\Debug\BusinessObjects.dll
+C:\Users\Rhett\Desktop\FinalProject\BusinessObjects\obj\Debug\BusinessObjects.pdb
+C:\Users\Rhett\Desktop\FinalProject\BusinessObjects\obj\Debug\BusinessObjects.csprojResolveAssemblyReference.cache
+C:\Users\Rhett\Desktop\FinalProject 2\BusinessObjects\bin\Debug\BusinessObjects.dll
+C:\Users\Rhett\Desktop\FinalProject 2\BusinessObjects\bin\Debug\BusinessObjects.pdb
+C:\Users\Rhett\Desktop\FinalProject 2\BusinessObjects\obj\Debug\BusinessObjects.csprojResolveAssemblyReference.cache
+C:\Users\Rhett\Desktop\FinalProject 2\BusinessObjects\obj\Debug\BusinessObjects.dll
+C:\Users\Rhett\Desktop\FinalProject 2\BusinessObjects\obj\Debug\BusinessObjects.pdb
+C:\Users\Rhett\Desktop\FinalProject 3\BusinessObjects\bin\Debug\BusinessObjects.dll
+C:\Users\Rhett\Desktop\FinalProject 3\BusinessObjects\bin\Debug\BusinessObjects.pdb
+C:\Users\Rhett\Desktop\FinalProject 3\BusinessObjects\obj\Debug\BusinessObjects.csprojResolveAssemblyReference.cache
+C:\Users\Rhett\Desktop\FinalProject 3\BusinessObjects\obj\Debug\BusinessObjects.dll
+C:\Users\Rhett\Desktop\FinalProject 3\BusinessObjects\obj\Debug\BusinessObjects.pdb
+C:\Users\Rhett\Desktop\NETFinalProject\BusinessObjects\bin\Debug\BusinessObjects.dll
+C:\Users\Rhett\Desktop\NETFinalProject\BusinessObjects\bin\Debug\BusinessObjects.pdb
+C:\Users\Rhett\Desktop\NETFinalProject\BusinessObjects\obj\Debug\BusinessObjects.dll
+C:\Users\Rhett\Desktop\NETFinalProject\BusinessObjects\obj\Debug\BusinessObjects.pdb
+C:\Users\Rhett\Desktop\NETFinalProject\BusinessObjects\obj\Debug\BusinessObjects.csprojResolveAssemblyReference.cache

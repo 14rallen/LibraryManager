@@ -1,0 +1,24 @@
+﻿@using BusinessObjects
+@if (this.Session["AccessToken"] != null)
+{
+    AccessToken accessToken = (AccessToken)this.Session["AccessToken"];
+        
+    @Html.AntiForgeryToken()
+
+    <ul class="nav navbar-nav navbar-right">
+        <li>
+            @Html.ActionLink(@accessToken.User.FirstName + " " + @accessToken.User.LastName + "'s profile", "ViewProfile", "Login")
+        </li>
+        <li>
+            @Html.ActionLink("Log out", "LogOff", "Login")
+        </li>
+    </ul>
+    
+}
+else
+{
+    <ul class="nav navbar-nav navbar-right">
+        <li>@Html.ActionLink("Register", "Register", "Login", routeValues: null, htmlAttributes: new { id = "registerLink" })</li>
+        <li>@Html.ActionLink("Log in", "Login", "Login", routeValues: null, htmlAttributes: new { id = "loginLink" })</li>
+    </ul>
+}

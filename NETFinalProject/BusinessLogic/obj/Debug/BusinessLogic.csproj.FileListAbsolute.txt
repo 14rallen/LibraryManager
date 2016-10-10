@@ -1,0 +1,54 @@
+F:\NET 3\FinalProject\BusinessLogic\bin\Debug\BusinessLogic.dll
+F:\NET 3\FinalProject\BusinessLogic\bin\Debug\BusinessLogic.pdb
+F:\NET 3\FinalProject\BusinessLogic\bin\Debug\BusinessObjects.dll
+F:\NET 3\FinalProject\BusinessLogic\bin\Debug\DataAccess.dll
+F:\NET 3\FinalProject\BusinessLogic\bin\Debug\BusinessObjects.pdb
+F:\NET 3\FinalProject\BusinessLogic\bin\Debug\DataAccess.pdb
+F:\NET 3\FinalProject\BusinessLogic\obj\Debug\BusinessLogic.csprojResolveAssemblyReference.cache
+F:\NET 3\FinalProject\BusinessLogic\obj\Debug\BusinessLogic.dll
+F:\NET 3\FinalProject\BusinessLogic\obj\Debug\BusinessLogic.pdb
+D:\NET 3\FinalProject\BusinessLogic\bin\Debug\BusinessLogic.dll
+D:\NET 3\FinalProject\BusinessLogic\bin\Debug\BusinessLogic.pdb
+D:\NET 3\FinalProject\BusinessLogic\bin\Debug\BusinessObjects.dll
+D:\NET 3\FinalProject\BusinessLogic\bin\Debug\DataAccess.dll
+D:\NET 3\FinalProject\BusinessLogic\bin\Debug\BusinessObjects.pdb
+D:\NET 3\FinalProject\BusinessLogic\bin\Debug\DataAccess.pdb
+D:\NET 3\FinalProject\BusinessLogic\obj\Debug\BusinessLogic.csprojResolveAssemblyReference.cache
+D:\NET 3\FinalProject\BusinessLogic\obj\Debug\BusinessLogic.dll
+D:\NET 3\FinalProject\BusinessLogic\obj\Debug\BusinessLogic.pdb
+C:\Users\Rhett\Desktop\FinalProject\BusinessLogic\bin\Debug\BusinessLogic.dll
+C:\Users\Rhett\Desktop\FinalProject\BusinessLogic\bin\Debug\BusinessLogic.pdb
+C:\Users\Rhett\Desktop\FinalProject\BusinessLogic\bin\Debug\BusinessObjects.dll
+C:\Users\Rhett\Desktop\FinalProject\BusinessLogic\bin\Debug\DataAccess.dll
+C:\Users\Rhett\Desktop\FinalProject\BusinessLogic\bin\Debug\BusinessObjects.pdb
+C:\Users\Rhett\Desktop\FinalProject\BusinessLogic\bin\Debug\DataAccess.pdb
+C:\Users\Rhett\Desktop\FinalProject\BusinessLogic\obj\Debug\BusinessLogic.csprojResolveAssemblyReference.cache
+C:\Users\Rhett\Desktop\FinalProject\BusinessLogic\obj\Debug\BusinessLogic.dll
+C:\Users\Rhett\Desktop\FinalProject\BusinessLogic\obj\Debug\BusinessLogic.pdb
+C:\Users\Rhett\Desktop\FinalProject 2\BusinessLogic\bin\Debug\BusinessLogic.dll
+C:\Users\Rhett\Desktop\FinalProject 2\BusinessLogic\bin\Debug\BusinessLogic.pdb
+C:\Users\Rhett\Desktop\FinalProject 2\BusinessLogic\bin\Debug\BusinessObjects.dll
+C:\Users\Rhett\Desktop\FinalProject 2\BusinessLogic\bin\Debug\DataAccess.dll
+C:\Users\Rhett\Desktop\FinalProject 2\BusinessLogic\bin\Debug\BusinessObjects.pdb
+C:\Users\Rhett\Desktop\FinalProject 2\BusinessLogic\bin\Debug\DataAccess.pdb
+C:\Users\Rhett\Desktop\FinalProject 2\BusinessLogic\obj\Debug\BusinessLogic.csprojResolveAssemblyReference.cache
+C:\Users\Rhett\Desktop\FinalProject 2\BusinessLogic\obj\Debug\BusinessLogic.dll
+C:\Users\Rhett\Desktop\FinalProject 2\BusinessLogic\obj\Debug\BusinessLogic.pdb
+C:\Users\Rhett\Desktop\FinalProject 3\BusinessLogic\bin\Debug\BusinessLogic.dll
+C:\Users\Rhett\Desktop\FinalProject 3\BusinessLogic\bin\Debug\BusinessLogic.pdb
+C:\Users\Rhett\Desktop\FinalProject 3\BusinessLogic\bin\Debug\BusinessObjects.dll
+C:\Users\Rhett\Desktop\FinalProject 3\BusinessLogic\bin\Debug\DataAccess.dll
+C:\Users\Rhett\Desktop\FinalProject 3\BusinessLogic\bin\Debug\BusinessObjects.pdb
+C:\Users\Rhett\Desktop\FinalProject 3\BusinessLogic\bin\Debug\DataAccess.pdb
+C:\Users\Rhett\Desktop\FinalProject 3\BusinessLogic\obj\Debug\BusinessLogic.csprojResolveAssemblyReference.cache
+C:\Users\Rhett\Desktop\FinalProject 3\BusinessLogic\obj\Debug\BusinessLogic.dll
+C:\Users\Rhett\Desktop\FinalProject 3\BusinessLogic\obj\Debug\BusinessLogic.pdb
+C:\Users\Rhett\Desktop\NETFinalProject\BusinessLogic\bin\Debug\BusinessLogic.dll
+C:\Users\Rhett\Desktop\NETFinalProject\BusinessLogic\bin\Debug\BusinessLogic.pdb
+C:\Users\Rhett\Desktop\NETFinalProject\BusinessLogic\bin\Debug\BusinessObjects.dll
+C:\Users\Rhett\Desktop\NETFinalProject\BusinessLogic\bin\Debug\DataAccess.dll
+C:\Users\Rhett\Desktop\NETFinalProject\BusinessLogic\bin\Debug\BusinessObjects.pdb
+C:\Users\Rhett\Desktop\NETFinalProject\BusinessLogic\bin\Debug\DataAccess.pdb
+C:\Users\Rhett\Desktop\NETFinalProject\BusinessLogic\obj\Debug\BusinessLogic.csprojResolveAssemblyReference.cache
+C:\Users\Rhett\Desktop\NETFinalProject\BusinessLogic\obj\Debug\BusinessLogic.dll
+C:\Users\Rhett\Desktop\NETFinalProject\BusinessLogic\obj\Debug\BusinessLogic.pdb

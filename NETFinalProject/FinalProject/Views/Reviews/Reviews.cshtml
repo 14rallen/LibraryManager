@@ -1,0 +1,41 @@
+﻿@model IEnumerable<BusinessObjects.ReviewDesc>
+@section styles{
+    <link rel="Stylesheet" href="@Href("~/Content/Site.css")" />
+}
+@using BusinessLogic;
+@using BusinessObjects;
+@{
+    AccessToken accessToken = ((AccessToken)Session["AccessToken"]);
+    ReviewManager reviewManager = new ReviewManager();
+    BookManager bookManager = new BookManager();
+
+    string isbn = ViewBag.ISBN;
+    Book book = bookManager.GetBookListByISBN(isbn).ElementAt(0);
+}
+
+<div class="jumbotron">
+    <h2>Reviews for @Html.ActionLink(book.Title, "Details", "Book", book, null)</h2>
+    <p class="lead"></p>
+    <ul class="toplinks">
+        @if (accessToken != null)
+        {
+            <li>@Html.ActionLink("Write a review", "AddReview", "Reviews", new { book.ISBN }, new { @class = "linkbutton" })</li>
+        }
+        else
+        {
+            <li><p class="lead">Want to leave your own review? @Html.ActionLink("Log in", "Login", "Login", null, null)</p></li>
+        }
+    </ul>
+</div>
+<h3 class="error">@Session["Error"]</h3>
+@foreach (var review in (List<ReviewDesc>)Model)
+{
+    <div class="reviewName">
+        @Html.DisplayFor(modelItem => review.UserName)
+    </div>
+    <div class="reviewContent">
+        @Html.DisplayFor(modelItem => review.Content)
+    </div>
+}
+
+@Html.ValidationSummary("", new { @class = "text-danger" })

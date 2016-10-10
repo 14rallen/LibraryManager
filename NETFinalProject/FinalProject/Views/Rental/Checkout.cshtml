@@ -1,0 +1,52 @@
+﻿@model BusinessObjects.Book
+@using BusinessLogic
+@using BusinessObjects
+
+@{
+    RentalManager rentalManager = new RentalManager();
+    Rental rental = rentalManager.GetRentalForRentalWindow();
+}
+
+<div class="jumbotron">
+    <h2>Checking out @Model.Title</h2>
+    <p class="lead">Once a book is checked out, you have two weeks to return it. Every day past the due date results in $0.25 / day in late fees.</p>
+    <ul class="toplinks">
+        @{Session["submit"] = "Checkout";}
+        <li>@Html.ActionLink("Checkout", "Checkout", "Rental", Model, new { @class = "linkbutton" })</li>
+    </ul>
+</div>
+<div class="table">
+    <div class="tableCell">
+        <div class="tableRow tableHeader">Book</div>
+        <div class="tableRow tableHeader">Today</div>
+        <div class="tableRow tableHeader">Return Date</div>
+    </div>
+    <div class="tableCell">
+        <div class="tableRow">@Model.Title</div>
+        <div class="tableRow">@rental.DateRented.ToString("MM/dd/yyyy")</div>
+        <div class="tableRow">@rental.DateDue.ToString("MM/dd/yyyy")</div>
+    </div>
+</div>
+
+@*@using (Html.BeginForm("Checkout", "Rental", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+{
+    Session["submit"] = "Checkout";
+    @Html.AntiForgeryToken()
+
+    <div hidden="hidden">
+        @Html.EditorForModel()
+        @Html.EditorFor(model => model.ISBN)
+        @Html.EditorFor(model => model.Title)
+        @Html.EditorFor(model => model.AuthorID)
+        @Html.EditorFor(model => model.Copies)
+        @Html.EditorFor(model => model.Pages)
+        @Html.EditorFor(model => model.Publisher)
+        @Html.EditorFor(model => model.Active)
+    </div>
+
+    <div>
+        <input type="submit" name="submit" value="Checkout" />
+    </div>
+}*@
+
+@Html.ValidationSummary("", new { @class = "text-danger" })

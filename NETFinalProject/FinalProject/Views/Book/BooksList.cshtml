@@ -1,0 +1,60 @@
+﻿@model IEnumerable<BusinessObjects.Book>
+
+@using BusinessLogic
+@using BusinessObjects
+
+@{
+    AuthorManager authorManager = new AuthorManager();
+    AccessToken accessToken = (AccessToken)Session["AccessToken"];
+    Paginate<Book> paginate = new Paginate<Book>();
+    PageDetails page = (PageDetails)Session["PageDetails"];
+    if (page == null)
+    {
+        page = new PageDetails()
+        {
+            Count = 1,
+            CurrentPage = 1,
+            PerPage = 5
+        };
+    }
+}
+
+@foreach (var book in paginate.GetList(page, (List<Book>)Model))
+{
+    <div class="bookDisplay">
+        <img src="@("/Content/Images/" + book.ISBN + ".png")" onerror="this.onerror = null; this.src = '/Content/Images/default.png'" class="bookImage" />
+        <div class="bookContent">
+            <p class="bookTitle">
+                @Html.DisplayFor(modelItem => book.Title)
+            </p>
+            <p class="bookISBN">
+                @Html.DisplayFor(modelItem => book.ISBN)
+            </p>
+            <p class="bookAuthor">
+                @{
+    Author author = authorManager.GetAuthorByID(book.AuthorID);
+    string authorName = author.FirstName + " " + author.LastName;
+
+    @Html.DisplayFor(modelItem => authorName);
+                }
+            </p>
+            <p class="bookDue">
+                @{
+    if (accessToken != null)
+    {
+        RentalManager rentalManager = new RentalManager();
+        Rental rental = rentalManager.GetRentalByCustomerID(accessToken.User.CustomerID, book.ISBN);
+        if (rental != null && rental.DateDue.ToString() != null && rental.DateDue.ToString() != "")
+        {
+            @rental.DateDue.ToString("Due MMMM dd, yyyy")
+        }
+    }
+                }
+            </p>
+            <p class="bookDetails">
+                @Html.ActionLink("View Details", "Details", "Book", book, null)
+            </p>
+        </div>
+    </div>
+}
+@Html.ValidationSummary("", new { @class = "text-danger" })

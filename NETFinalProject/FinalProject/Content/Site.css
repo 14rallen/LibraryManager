@@ -1,0 +1,183 @@
+﻿body {
+    padding-top: 50px;
+    padding-bottom: 20px;
+}
+
+.body-content {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+.dl-horizontal dt {
+    white-space: normal;
+}
+
+input,
+select,
+textarea {
+    max-width: 280px;
+}
+
+img.book{
+   width: auto;
+   height: 250px;
+   max-height: 250px;
+   display:block;
+}
+
+div.table{
+  display:table;         
+  width:auto;                       
+  border-spacing:10px;
+
+  margin: 10px auto 0 auto;
+}
+
+div.tableRow{
+  display:table-row;
+  width:auto;
+  clear:both;
+}
+
+div.tableCell{
+  float:left;
+  display:table-column;         
+  width:200px;         
+  background-color:#ccc;
+}
+
+div.tableHeader{
+    font-weight: bold;
+}
+
+div.page{
+    width: auto;
+}
+
+.center{
+    margin: 10px auto;
+    text-align: center;
+}
+
+div.search{
+    width: auto;
+    display: table;
+    margin: 5px auto 0 auto;
+}
+
+div.search{
+    width: auto;
+    display: table;
+    margin: 5px auto 0 auto;
+}
+
+div.search input[type=submit]{
+    width: 120px;
+}
+
+div.sideways{
+    display: block;
+    height: 250px;
+    width: 500px;
+    padding: 20px;
+    margin: 20px auto;
+}
+
+div.sideways .tableCell{
+    margin: auto;
+    vertical-align: middle;
+}
+
+div.tableContainer{
+    margin: 0 auto;
+}
+
+.linkbutton, a:link.linkbutton, a:visited.linkbutton {
+    background-color: black;
+    color: white;
+    padding: 10px 20px;
+    text-decoration: none;
+    border-radius: 4px 4px 0 0;
+    display: inline-block;
+}
+
+
+label:hover.linkbutton, input:hover.linkbutton, a:hover.linkbutton, a:active.linkbutton {
+    background-color: red;
+}
+
+ul.toplinks li, input.linkbutton{
+    display: inline;
+}
+
+.reviewName{
+    font-weight: bold;
+    font-size: 20px;
+    margin-bottom: 10px;
+}
+
+.reviewContent{
+    padding-bottom: 25px;
+    border-bottom: solid black 1px;
+    margin-bottom: 40px;
+}
+
+.error{
+    color: red;
+}
+
+input[type="file"] {
+    display: none;
+}
+.custom-file-upload {
+    border: 1px solid #ccc;
+    display: inline-block;
+    padding: 6px 12px;
+    cursor: pointer;
+}
+
+.indent{
+    text-indent: 50px;
+}
+
+.bookDisplay{
+    margin: 0 auto 50px auto;
+    display: flex;
+}
+
+.bookContent{
+    height: 100%;
+    padding: 20px;
+}
+
+.bookImage{
+    width: auto;
+    height: 200px;
+    width: 150px;
+}
+
+.bookTitle{
+    font-size: 25px;
+    font-weight: bold;
+    margin-bottom: 0px;
+}
+
+.bookISBN{
+    font-size: 15px;
+    font-weight: bold;
+    display: inline;
+    color: gray;
+}
+
+.bookAuthor{
+    font-size: 15px;
+    color: gray;
+}
+
+.bookDetails{
+    font-size: 15px;
+}
+
+.bookDue{
+    color: blue;
+}

@@ -1,0 +1,107 @@
+﻿@model IEnumerable<BusinessObjects.OrderDesc>
+@section styles{
+    <link rel="Stylesheet" href="@Href("~/Content/Site.css")" />
+    <link href="~/Content/bootstrap.css" rel="stylesheet" />
+}
+@section scripts{
+    <script src="~/Scripts/bootstrap.js"></script>
+    <link href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/themes/cupertino/jquery-ui.css" type="text/css" rel="Stylesheet" />
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4/jquery.min.js" type="text/javascript"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/jquery-ui.min.js" type="text/javascript"></script>
+    <script type="text/javascript" language="javascript">
+        $(document).ready(function () {
+            $("#searchTitle").autocomplete({
+                source: "@Url.Action("AutocompleteTitle")"
+            });
+
+            $("#searchISBN").autocomplete({
+                source: "@Url.Action("AutocompleteISBN")"
+            });
+
+            $("#searchAuthor").autocomplete({
+                source: "@Url.Action("AutocompleteAuthor")"
+            });
+        });
+    </script>
+}
+@Styles.Render("~/Content/themes/base/css")
+@Scripts.Render("~/bundles/jquery")
+@Scripts.Render("~/bundles/jqueryui")
+@using BusinessLogic
+@using BusinessObjects
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    AuthorManager authorManager = new AuthorManager();
+    Paginate<OrderDesc> paginate = new Paginate<OrderDesc>();
+    PageDetails pageDetails = (PageDetails)Session["PageDetails"];
+    if (pageDetails == null)
+    {
+        pageDetails = new PageDetails()
+        {
+            Count = 1,
+            CurrentPage = 1,
+            PerPage = 5
+        };
+    }
+}
+
+<div class="jumbotron">
+    <h2>Browse orders</h2>
+    <p class="lead">Here's a list of recent orders</p>
+    <ul class="toplinks">
+        <li>@Html.ActionLink("New Order", "AddOrder", "Order", null, new { @class = "linkbutton" })</li>
+    </ul>
+</div>
+<div class="page">
+    @using (Html.BeginForm("Orders", "Order", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+    {
+        @Html.AntiForgeryToken()
+    }
+
+    <div class="container">
+        <ul class="pager">
+            <li>@Html.ActionLink("Previous", "Orders", "Order", new { page = pageDetails.CurrentPage - 1 }, new { @class = "previous" })</li>
+            <li>@Html.ActionLink("Next", "Orders", "Order", new { page = pageDetails.CurrentPage + 1 }, new { @class = "next" })</li>
+        </ul>
+    </div>
+    <div>
+        Current Page: @pageDetails.CurrentPage
+    </div>
+    <div class="table">
+        <div class="tableRow">
+            <div class="tableCell tableHeader">
+                Title
+            </div>
+            <div class="tableCell tableHeader">
+                Quantity
+            </div>
+            <div class="tableCell tableHeader">
+                Employee
+            </div>
+            <div class="tableCell tableHeader">
+                Date Ordered
+            </div>
+        </div>
+        @foreach (var order in paginate.GetList(pageDetails, (List<OrderDesc>)Model))
+        {
+            <div class="tableRow">
+                <div class="tableCell">
+                    @Html.DisplayFor(modelItem => order.Title)
+                </div>
+                <div class="tableCell">
+                    @Html.DisplayFor(modelItem => order.Quantity)
+                </div>
+                <div class="tableCell">
+                    @Html.DisplayFor(modelItem => order.StaffName)
+                </div>
+                <div class="tableCell">
+                    @{
+            string date = order.DateOrdered.ToString("MM/dd/yyyy");
+                    }
+                    @Html.DisplayFor(modelItem => date)
+                </div>
+            </div>
+        }
+    </div>
+</div>

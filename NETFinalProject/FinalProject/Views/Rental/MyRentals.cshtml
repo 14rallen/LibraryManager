@@ -1,0 +1,20 @@
+﻿@model IEnumerable<BusinessObjects.Rental>
+@using BusinessLogic;
+@using BusinessObjects
+@{
+    AuthorManager authorManager = new AuthorManager();
+    RentalManager rentalManager = new RentalManager();
+    BookManager bookManager = new BookManager();
+
+    List<Rental> rentals = (List<Rental>)Session["Rentals"];
+    List<Book> books = (List<Book>)Session["RentedBooks"];
+
+    Customer user = ((AccessToken)Session["AccessToken"]).User;
+    
+}
+
+<div class="jumbotron">
+    <h2>My checked out books</h2>
+    <p class="lead">View all of your books that are currently checked out.</p>
+</div>
+@{Html.RenderPartial("~/Views/Book/BooksList.cshtml", books);}

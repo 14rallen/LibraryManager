@@ -1,0 +1,211 @@
+﻿@model BusinessObjects.Book
+@section styles{
+    <link rel="Stylesheet" href="@Href("~/Content/Site.css")" />
+}
+@using BusinessLogic;
+@using BusinessObjects;
+@{
+    AccessToken accessToken = ((AccessToken)Session["AccessToken"]);
+}
+
+
+<div class="jumbotron">
+    <h2>Viewing @Model.Title</h2>
+    <p class="lead"></p>
+    <ul class="toplinks">
+        <li>@Html.ActionLink("Reviews", "Reviews", "Reviews", Model, new { @class = "linkbutton" })</li>
+
+        @if (accessToken != null)
+        {
+            <li>@Html.ActionLink("Write a review", "AddReview", "Reviews", new { Model.ISBN }, new { @class = "linkbutton" })</li>
+
+            if (Session["AccessToken"] != null)
+            {
+                Customer user = ((AccessToken)Session["AccessToken"]).User;
+                BookManager bookManager = new BookManager();
+
+                string submitValue = "Checkout Book";
+                if (bookManager.IsBookRented(Model, user))
+                {
+                    submitValue = "Return Book";
+                    <li>@Html.ActionLink(submitValue, "Checkout", "Rental", Model, new { @class = "linkbutton" })</li>
+                }
+                else
+                {
+                    <li>@Html.ActionLink(submitValue, "Checkout", "Rental", Model, new { @class = "linkbutton" })</li>
+                }
+                Session["submit"] = submitValue;
+
+                if (accessToken != null && (accessToken.IsUserInRole("Admin") || accessToken.IsUserInRole("Employee")))
+                {
+                    <li>@Html.ActionLink("Delete Book", "DeleteBook", "Book", Model, new { @class = "linkbutton" })</li>
+                    <li>@Html.ActionLink("Edit Book", "EditBook", "Book", Model, new { @class = "linkbutton" })</li>
+
+                    using (Html.BeginForm("Details", "Book", FormMethod.Post, new { enctype = "multipart/form-data", @class = "form-horizontal", role = "form" }))
+                    {
+                        @Html.AntiForgeryToken()
+
+                        <li hidden="hidden">
+                            @Html.TextBoxFor(model => model.ISBN, new { hidden = "hidden" })
+                            @Html.TextBoxFor(model => model.Title, new { hidden = "hidden" })
+                            @Html.TextBoxFor(model => model.AuthorID, new { hidden = "hidden" })
+                            @Html.TextBoxFor(model => model.Copies, new { hidden = "hidden" })
+                            @Html.TextBoxFor(model => model.Pages, new { hidden = "hidden" })
+                            @Html.TextBoxFor(model => model.Publisher, new { hidden = "hidden" })
+                            @Html.TextBoxFor(model => model.Active, new { hidden = "hidden" })
+                        </li>
+
+                        <li>
+                            <label for="ImageFile" class="custom-file-upload linkbutton">
+                                Upload Image
+                            </label>
+                        </li>
+                        <li><input type="file" id="ImageFile" name="ImageFile" accept="image/*" /></li>
+                        <li><input type="submit" name="submit" value="Submit Image" class="linkbutton" /></li>
+                    }
+                }
+            }
+        }
+        else
+        {
+            <li><br/><br/><p class="lead">Want to check out this book or leave a review? @Html.ActionLink("Log in", "Login", "Login", null, null)</p></li>
+        }
+    </ul>
+</div>
+
+<img src="@("/Content/Images/" + Model.ISBN + ".png")" onerror="this.onerror = null; this.src = '/Content/Images/default.png'" class="book center" />
+
+<div class="table sideways">
+    <div class="tableCell">
+        <div class="tableRow tableHeader">
+            Title
+        </div>
+        <div class="tableRow tableHeader">
+            ISBN
+        </div>
+        <div class="tableRow tableHeader">
+            Author
+        </div>
+        <div class="tableRow tableHeader">
+            Publisher
+        </div>
+        <div class="tableRow tableHeader">
+            In Stock
+        </div>
+        <div class="tableRow tableHeader">
+            Pages
+        </div>
+    </div>
+    <div class="tableCell">
+        <div class="tableRow">
+            @Model.Title
+        </div>
+        <div class="tableRow">
+            @Model.ISBN
+        </div>
+        <div class="tableRow">
+            @{
+                AuthorManager authorManager = new AuthorManager();
+                Author author = authorManager.GetAuthorByID(Model.AuthorID);
+            }
+            @author.FirstName @author.LastName
+        </div>
+        <div class="tableRow">
+            @Model.Publisher
+        </div>
+        <div class="tableRow">
+            @Model.Copies
+        </div>
+        <div class="tableRow">
+            @Model.Pages
+        </div>
+    </div>
+</div>
+
+@*@using (Html.BeginForm("EditBook", "Book", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+    {
+        @Html.AntiForgeryToken()
+
+        <div hidden="hidden">
+            @Html.EditorForModel()
+            @Html.EditorFor(model => model.ISBN)
+            @Html.EditorFor(model => model.Title)
+            @Html.EditorFor(model => model.AuthorID)
+            @Html.EditorFor(model => model.Copies)
+            @Html.EditorFor(model => model.Pages)
+            @Html.EditorFor(model => model.Publisher)
+            @Html.EditorFor(model => model.Active)
+        </div>
+
+        <div>
+            @{
+            if (accessToken.IsUserInRoles(new string[] { "Admin", "Employee" }))
+                {
+                    <input type="submit" name="submit" value="Edit Book" />
+                }
+            }
+        </div>
+    }*@
+
+@*@using (Html.BeginForm("DeleteBook", "Book", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+    {
+        @Html.AntiForgeryToken()
+
+        <div hidden="hidden">
+            @Html.EditorForModel()
+            @Html.EditorFor(model => model.ISBN)
+            @Html.EditorFor(model => model.Title)
+            @Html.EditorFor(model => model.AuthorID)
+            @Html.EditorFor(model => model.Copies)
+            @Html.EditorFor(model => model.Pages)
+            @Html.EditorFor(model => model.Publisher)
+            @Html.EditorFor(model => model.Active)
+        </div>
+
+        <div>
+            @{
+        if (accessToken.IsUserInRoles(new string[] { "Admin", "Employee" }))
+        {
+            <input type="submit" name="submit" value="Delete Book" />
+        }
+            }
+        </div>
+    }*@
+
+@*@using (Html.BeginForm("Checkout", "Rental", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+    {
+        @Html.AntiForgeryToken()
+
+        string submitValue = "Checkout Book";
+        if (Session["AccessToken"] != null)
+        {
+            Customer user = ((AccessToken)Session["AccessToken"]).User;
+            BookManager bookManager = new BookManager();
+
+            if (bookManager.IsBookRented(Model, user))
+            {
+                submitValue = "Return Book";
+            }
+        }
+
+        <div hidden="hidden">
+            @Html.EditorForModel()
+            @Html.EditorFor(model => model.ISBN)
+            @Html.EditorFor(model => model.Title)
+            @Html.EditorFor(model => model.AuthorID)
+            @Html.EditorFor(model => model.Copies)
+            @Html.EditorFor(model => model.Pages)
+            @Html.EditorFor(model => model.Publisher)
+            @Html.EditorFor(model => model.Active)
+        </div>
+
+        <div>
+            @{
+        if (accessToken != null)
+        {
+            <input type="submit" name="submit" value="@submitValue" />
+        }
+            }
+        </div>
+    }*@
+@Html.ValidationSummary("", new { @class = "text-danger" })
